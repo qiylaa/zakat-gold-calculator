@@ -7,27 +7,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+        android:orientation="vertical">
 
-        <TextView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/aboutToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingTop="24dp"
+            android:background="#6B4F1D"
+            android:title="About Application"
+            android:titleTextColor="#FFFFFF" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="About Application"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="#6B4F1D"
-            android:gravity="center"
-            android:paddingBottom="20dp" />
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <TextView
-            android:id="@+id/aboutText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:textColor="#333333"
-            android:autoLink="web"
-            android:text="Application Name: Zakat Gold Calculator&#10;&#10;Developer: NURIN 'AQILAH BINTI RAHMAT&#10;Student Number: 2025747583&#10;Programme Code: CDCS251&#10;Group: CDCS2515A&#10;&#10;This application is developed to estimate zakat payment for gold keeping and wearing based on gold weight, gold type, and current gold value per gram.&#10;&#10;Copyright © 2026 NURIN 'AQILAH BINTI RAHMAT. All rights reserved.&#10;&#10;Application Website: https://github.com/qiylaa/zakat-gold-calculator.git" />
+            <TextView
+                android:id="@+id/aboutText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:autoLink="web"
+                android:lineSpacingExtra="6dp"
+                android:text="Application Name: Zakat Gold Calculator&#10;&#10;Developer: Nurin 'Aqilah binti Rahmat&#10;Student Number: 2025747583&#10;Programme Code: CDCS251&#10;Group: CDCS2515A&#10;&#10;This application is developed to estimate zakat payment for gold keeping and wearing based on gold weight, gold type, and current gold value per gram.&#10;&#10;Copyright © 2026 Nurin 'Aqilah binti Rahmat. All rights reserved.&#10;&#10;Application Website:&#10;https://github.com/qiylaa/zakat-gold-calculator.git" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

@@ -7,79 +7,84 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+        android:orientation="vertical">
 
-        <TextView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingTop="24dp"
+            android:background="#6B4F1D"
+            android:title="Zakat Gold Calculator"
+            android:titleTextColor="#FFFFFF" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Zakat Gold Calculator"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="#6B4F1D"
-            android:gravity="center"
-            android:paddingBottom="20dp" />
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <EditText
-            android:id="@+id/weightInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter gold weight in grams"
-            android:inputType="numberDecimal" />
-
-        <RadioGroup
-            android:id="@+id/typeGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="12dp">
-
-            <RadioButton
-                android:id="@+id/keepRadio"
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Keep" />
+                android:text="Enter your gold information below to estimate zakat payment."
+                android:textSize="15sp"
+                android:textColor="#6B4F1D"
+                android:paddingBottom="12dp" />
 
-            <RadioButton
-                android:id="@+id/wearRadio"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/weightInput"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Wear" />
-        </RadioGroup>
+                android:hint="Enter gold weight in grams"
+                android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/priceInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter current gold value per gram RM"
-            android:inputType="numberDecimal" />
+            <RadioGroup
+                android:id="@+id/typeGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="12dp">
 
-        <Button
-            android:id="@+id/calculateBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Calculate Zakat"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#B8860B"
-            android:textColor="#FFFFFF" />
+                <RadioButton
+                    android:id="@+id/keepRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Keep" />
 
-        <Button
-            android:id="@+id/aboutBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="About Application"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#6B4F1D"
-            android:textColor="#FFFFFF" />
+                <RadioButton
+                    android:id="@+id/wearRadio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wear" />
+            </RadioGroup>
 
-        <TextView
-            android:id="@+id/resultText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Result will appear here"
-            android:textSize="18sp"
-            android:textColor="#333333"
-            android:paddingTop="24dp" />
+            <EditText
+                android:id="@+id/priceInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter current gold value per gram RM"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/calculateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Calculate Zakat"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#B8860B"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/resultText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Result will appear here"
+                android:textSize="18sp"
+                android:textColor="#333333"
+                android:paddingTop="24dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

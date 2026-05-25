@@ -12,13 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText weightInput, priceInput;
     RadioGroup typeGroup;
     RadioButton keepRadio, wearRadio;
-    Button calculateBtn, aboutBtn;
+    Button calculateBtn;
     TextView resultText;
 
     @Override
@@ -26,21 +27,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         weightInput = findViewById(R.id.weightInput);
         priceInput = findViewById(R.id.priceInput);
         typeGroup = findViewById(R.id.typeGroup);
         keepRadio = findViewById(R.id.keepRadio);
         wearRadio = findViewById(R.id.wearRadio);
         calculateBtn = findViewById(R.id.calculateBtn);
-        aboutBtn = findViewById(R.id.aboutBtn);
         resultText = findViewById(R.id.resultText);
 
         calculateBtn.setOnClickListener(v -> calculateZakat());
-
-        aboutBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(this, AboutActivity.class);
-            startActivity(intent);
-        });
     }
 
     private void calculateZakat() {
@@ -82,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         double totalZakat = zakatPayable * 0.025;
 
         String result = "Total Gold Value: RM " + String.format("%.2f", totalGoldValue) +
+                "\nGold Weight Minus Uruf: " + String.format("%.2f", payableWeight) + " g" +
                 "\nZakat Payable Value: RM " + String.format("%.2f", zakatPayable) +
                 "\nTotal Zakat: RM " + String.format("%.2f", totalZakat);
 
@@ -109,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Zakat Gold Calculator");
             shareIntent.putExtra(Intent.EXTRA_TEXT,
-                    "Check out my Zakat Gold Calculator app: https://github.com/qiylaa/zakat-gold-calculator.git");
+                    "Check out my Zakat Gold Calculator app: https://github.com/qiylaa/zakat-gold-calculator");
             startActivity(Intent.createChooser(shareIntent, "Share application using"));
             return true;
         }
