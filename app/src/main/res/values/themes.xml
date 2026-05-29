@@ -2,7 +2,12 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ZakatGoldCalculator" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/gold_primary</item>
+        <item name="colorSecondary">@color/gold_secondary</item>
+        <item name="colorError">@color/error_color</item>
+        <item name="android:statusBarColor">@color/gold_primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/gold_background</item>
     </style>
 
     <style name="Theme.ZakatGoldCalculator" parent="Base.Theme.ZakatGoldCalculator" />

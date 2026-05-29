@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -14,9 +13,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText weightInput, priceInput;
+    TextInputLayout weightInputLayout, priceInputLayout;
+    TextInputEditText weightInput, priceInput;
     RadioGroup typeGroup;
     RadioButton keepRadio, wearRadio;
     Button calculateBtn;
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        weightInputLayout = findViewById(R.id.weightInputLayout);
+        priceInputLayout = findViewById(R.id.priceInputLayout);
         weightInput = findViewById(R.id.weightInput);
         priceInput = findViewById(R.id.priceInput);
         typeGroup = findViewById(R.id.typeGroup);
@@ -42,49 +47,66 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calculateZakat() {
-        String weightStr = weightInput.getText().toString();
-        String priceStr = priceInput.getText().toString();
+        // Reset errors
+        weightInputLayout.setError(null);
+        priceInputLayout.setError(null);
 
-        if (weightStr.isEmpty() || priceStr.isEmpty()) {
-            Toast.makeText(this, "Please enter all required values", Toast.LENGTH_SHORT).show();
-            return;
+        String weightStr = weightInput.getText() != null ? weightInput.getText().toString() : "";
+        String priceStr = priceInput.getText() != null ? priceInput.getText().toString() : "";
+
+        boolean hasError = false;
+
+        if (weightStr.isEmpty()) {
+            weightInputLayout.setError(getString(R.string.error_weight_empty));
+            hasError = true;
+        }
+
+        if (priceStr.isEmpty()) {
+            priceInputLayout.setError(getString(R.string.error_price_empty));
+            hasError = true;
         }
 
         if (typeGroup.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(this, "Please select gold type", Toast.LENGTH_SHORT).show();
-            return;
+            Toast.makeText(this, getString(R.string.error_type_not_selected), Toast.LENGTH_SHORT).show();
+            hasError = true;
         }
+
+        if (hasError) return;
 
         double weight = Double.parseDouble(weightStr);
         double price = Double.parseDouble(priceStr);
 
-        double uruf;
-
-        if (keepRadio.isChecked()) {
-            uruf = 85;
-        } else {
-            uruf = 200;
-        }
+        double uruf = keepRadio.isChecked() ? 85 : 200;
 
         double totalGoldValue = weight * price;
         double payableWeight = weight - uruf;
-
-        double zakatPayable;
-
+        
+        double zakatPayableValue;
         if (payableWeight <= 0) {
-            zakatPayable = 0;
+            zakatPayableValue = 0;
         } else {
-            zakatPayable = payableWeight * price;
+            zakatPayableValue = payableWeight * price;
         }
 
-        double totalZakat = zakatPayable * 0.025;
+        double totalZakat = zakatPayableValue * 0.025;
 
         String result = "Total Gold Value: RM " + String.format("%.2f", totalGoldValue) +
+                "\nUruf Threshold: " + String.format("%.0f", uruf) + " g" +
                 "\nGold Weight Minus Uruf: " + String.format("%.2f", payableWeight) + " g" +
-                "\nZakat Payable Value: RM " + String.format("%.2f", zakatPayable) +
-                "\nTotal Zakat: RM " + String.format("%.2f", totalZakat);
+                "\n------------------------------------------" +
+                "\nZakat Payable: RM " + String.format("%.2f", zakatPayableValue) +
+                "\nTOTAL ZAKAT: RM " + String.format("%.2f", totalZakat);
 
         resultText.setText(result);
+    }
+
+    private void resetFields() {
+        weightInput.setText("");
+        priceInput.setText("");
+        typeGroup.clearCheck();
+        resultText.setText(getString(R.string.result_placeholder));
+        weightInputLayout.setError(null);
+        priceInputLayout.setError(null);
     }
 
     @Override
@@ -96,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+
+        if (id == R.id.action_reset) {
+            resetFields();
+            return true;
+        }
 
         if (id == R.id.action_about) {
             Intent intent = new Intent(this, AboutActivity.class);

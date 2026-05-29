@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Zakat Gold Calculator</string>
+    <string name="instruction_title">Instruction:</string>
+    <string name="instruction_desc">Enter your gold details below to calculate the zakat amount based on current gold value.</string>
+    <string name="weight_hint">Gold weight (grams)</string>
+    <string name="gold_type_label">Gold Type</string>
+    <string name="keep_label">Keep (Investment)</string>
+    <string name="wear_label">Wear (Ornament)</string>
+    <string name="price_hint">Current gold price per gram (RM)</string>
+    <string name="calculate_button">Calculate Zakat</string>
+    <string name="result_title">Calculation Result</string>
+    <string name="result_placeholder">Fill in the details and click calculate.</string>
+    <string name="notice_title">Helpful Notice:</string>
+    <string name="notice_desc">- Keep: Gold weight exceeds 85g is taxable.\n- Wear: Gold weight exceeds 200g is taxable.\n- Zakat rate is 2.5% of the taxable amount.</string>
+    <string name="error_weight_empty">Please enter gold weight</string>
+    <string name="error_price_empty">Please enter gold price</string>
+    <string name="error_type_not_selected">Please select gold type</string>
+    <string name="menu_reset">Reset</string>
+    <string name="about_title">About Application</string>
+    <string name="developer_info_title">Developer Info</string>
+    <string name="about_content">Application Name: Zakat Gold Calculator\n\nDeveloper: Nurin \'Aqilah binti Rahmat\nStudent Number: 2025747583\nProgramme Code: CDCS251\nGroup: CDCS2515A\n\nThis application is developed to estimate zakat payment for gold keeping and wearing based on gold weight, gold type, and current gold value per gram.\n\nCopyright © 2026 Nurin \'Aqilah binti Rahmat. All rights reserved.\n\nApplication Website:\nhttps://github.com/qiylaa/zakat-gold-calculator.git</string>
 </resources>
